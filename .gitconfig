@@ -1,0 +1,7 @@
+[user]
+	name = Fernando Wime
+	email = fernando.d@wime.com.mx
+[push]
+	default = simple
+[core]
+  excludesfile = ~/.gitignore
