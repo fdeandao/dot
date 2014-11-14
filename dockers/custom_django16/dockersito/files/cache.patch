@@ -1,0 +1,20 @@
+--- cache.py	2014-11-13 17:10:54.064095715 -0600
++++ cache_new.py	2014-11-13 17:11:32.736096389 -0600
+@@ -10,7 +10,7 @@
+ from django.db.models.query import QuerySet
+ from django.utils.encoding import smart_unicode, smart_str
+ from django.utils.functional import wraps
+-from django.utils.hashcompat import sha_constructor
++import hashlib
+ 
+ 
+ class EmptyObject(object):
+@@ -23,7 +23,7 @@
+ 
+ def key_from_args(*args, **kwargs):
+     "generate a hash of the given args and kwargs"
+-    return sha_constructor(prep_for_key((args, kwargs))).hexdigest()
++    return hashlib.sha1(prep_for_key((args, kwargs))).hexdigest()
+ 
+ def cached_filter(func, timeout=300):
+     """
